@@ -7,6 +7,7 @@ import { projects } from "@/lib/mockData";
 import { Plus, Calendar, Users, ArrowRight, MoreHorizontal } from "lucide-react";
 import { format } from "date-fns";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Link } from "wouter";
 
 export default function Projects() {
   const getStatusColor = (status: string) => {
@@ -27,10 +28,12 @@ export default function Projects() {
           <p className="text-muted-foreground mt-1">Manage ongoing initiatives and team deliverables.</p>
         </div>
         <div className="flex gap-2">
-           <Button size="sm">
-             <Plus className="mr-2 h-4 w-4" />
-             New Project
-           </Button>
+           <Link href="/projects/new">
+             <Button size="sm">
+               <Plus className="mr-2 h-4 w-4" />
+               New Project
+             </Button>
+           </Link>
         </div>
       </div>
 
@@ -74,22 +77,26 @@ export default function Projects() {
               </div>
             </CardContent>
             <CardFooter className="pt-3 border-t border-border/50 bg-muted/10">
-               <Button variant="ghost" className="w-full justify-between group text-sm font-medium">
-                 View Dashboard
-                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-               </Button>
+               <Link href={`/projects/${project.id}`}>
+                 <Button variant="ghost" className="w-full justify-between group text-sm font-medium">
+                   View Dashboard
+                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                 </Button>
+               </Link>
             </CardFooter>
           </Card>
         ))}
 
         {/* Create New Project Placeholder */}
-        <button className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-xl p-6 h-full min-h-[250px] hover:border-primary/50 hover:bg-accent/50 transition-all group text-muted-foreground hover:text-primary">
-          <div className="h-12 w-12 rounded-full bg-secondary flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors">
-            <Plus className="h-6 w-6" />
-          </div>
-          <span className="font-medium text-lg">Create New Project</span>
-          <span className="text-sm text-muted-foreground mt-1 text-center max-w-[200px]">Start a new initiative and assign your team.</span>
-        </button>
+        <Link href="/projects/new">
+          <button className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-xl p-6 h-full min-h-[250px] hover:border-primary/50 hover:bg-accent/50 transition-all group text-muted-foreground hover:text-primary w-full">
+            <div className="h-12 w-12 rounded-full bg-secondary flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors">
+              <Plus className="h-6 w-6" />
+            </div>
+            <span className="font-medium text-lg">Create New Project</span>
+            <span className="text-sm text-muted-foreground mt-1 text-center max-w-[200px]">Start a new initiative and assign your team.</span>
+          </button>
+        </Link>
       </div>
     </Layout>
   );

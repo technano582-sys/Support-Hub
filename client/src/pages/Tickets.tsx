@@ -50,10 +50,12 @@ export default function Tickets() {
              <Download className="mr-2 h-4 w-4" />
              Export
            </Button>
-           <Button size="sm">
-             <Plus className="mr-2 h-4 w-4" />
-             New Ticket
-           </Button>
+           <Link href="/tickets/new">
+             <Button size="sm">
+               <Plus className="mr-2 h-4 w-4" />
+               New Ticket
+             </Button>
+           </Link>
         </div>
       </div>
 

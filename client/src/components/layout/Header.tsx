@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { currentUser } from "@/lib/mockData";
+import { Link } from "wouter";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,10 +28,12 @@ export function Header() {
       </div>
 
       <div className="flex items-center space-x-4">
-        <Button variant="default" size="sm" className="hidden md:flex shadow-sm">
-          <Plus className="h-4 w-4 mr-2" />
-          New Ticket
-        </Button>
+        <Link href="/tickets/new">
+          <Button variant="default" size="sm" className="hidden md:flex shadow-sm">
+            <Plus className="h-4 w-4 mr-2" />
+            New Ticket
+          </Button>
+        </Link>
 
         <div className="h-8 w-px bg-border mx-2 hidden md:block"></div>
 
