@@ -1,12 +1,14 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { LayoutDashboard, Ticket, Users, BarChart3, Settings, HelpCircle, Layers } from "lucide-react";
+import { LayoutDashboard, Ticket, Users, BarChart3, Settings, HelpCircle, Layers, FolderKanban, CheckSquare } from "lucide-react";
 
 export function Sidebar() {
   const [location] = useLocation();
 
   const navItems = [
     { icon: LayoutDashboard, label: "Dashboard", href: "/" },
+    { icon: FolderKanban, label: "Projects", href: "/projects" },
+    { icon: CheckSquare, label: "Kanban Board", href: "/kanban" },
     { icon: Ticket, label: "Tickets", href: "/tickets" },
     { icon: Layers, label: "Assets", href: "/assets" },
     { icon: Users, label: "Users", href: "/users" },
@@ -20,7 +22,7 @@ export function Sidebar() {
         <span className="font-heading font-bold text-lg tracking-tight">ServiceCore</span>
       </div>
 
-      <div className="flex-1 py-6 px-3 space-y-1">
+      <div className="flex-1 py-6 px-3 space-y-1 overflow-y-auto">
         <div className="px-3 mb-2 text-xs font-semibold text-sidebar-foreground/50 uppercase tracking-wider">
           Main Menu
         </div>

@@ -4,9 +4,10 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  role: "admin" | "technician" | "user";
+  role: "admin" | "manager" | "member";
   avatar: string;
   department: string;
+  status: "active" | "offline" | "busy";
 };
 
 export type TicketStatus = "Open" | "In Progress" | "Pending" | "Resolved" | "Closed";
@@ -42,6 +43,33 @@ export type Asset = {
   warrantyExpires: Date;
 };
 
+export type ProjectStatus = "Planning" | "Active" | "On Hold" | "Completed";
+
+export type Project = {
+  id: string;
+  name: string;
+  description: string;
+  status: ProjectStatus;
+  lead: User;
+  team: User[];
+  startDate: Date;
+  endDate: Date;
+  progress: number;
+};
+
+export type TaskStatus = "Todo" | "In Progress" | "Review" | "Done";
+
+export type Task = {
+  id: string;
+  projectId: string;
+  title: string;
+  description: string;
+  status: TaskStatus;
+  priority: TicketPriority;
+  assignedTo: User;
+  dueDate: Date;
+};
+
 export const currentUser: User = {
   id: "u1",
   name: "Alex Morgan",
@@ -49,6 +77,7 @@ export const currentUser: User = {
   role: "admin",
   avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   department: "IT Operations",
+  status: "active",
 };
 
 export const users: User[] = [
@@ -57,25 +86,37 @@ export const users: User[] = [
     id: "u2",
     name: "Sarah Chen",
     email: "sarah.chen@company.com",
-    role: "technician",
+    role: "manager",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    department: "IT Support",
+    department: "Engineering",
+    status: "active",
   },
   {
     id: "u3",
     name: "Michael Scott",
     email: "m.scott@company.com",
-    role: "user",
+    role: "member",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     department: "Sales",
+    status: "busy",
   },
   {
     id: "u4",
     name: "Emily Blunt",
     email: "emily.b@company.com",
-    role: "user",
+    role: "member",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    department: "HR",
+    department: "Design",
+    status: "offline",
+  },
+  {
+    id: "u5",
+    name: "David Kim",
+    email: "d.kim@company.com",
+    role: "member",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    department: "Engineering",
+    status: "active",
   },
 ];
 
@@ -225,4 +266,93 @@ export const assets: Asset[] = [
     purchaseDate: subDays(new Date(), 150),
     warrantyExpires: addDays(new Date(), 215),
   }
+];
+
+export const projects: Project[] = [
+  {
+    id: "PROJ-001",
+    name: "Website Redesign",
+    description: "Overhaul of the corporate website with new branding and CMS.",
+    status: "Active",
+    lead: users[1],
+    team: [users[1], users[3], users[4]],
+    startDate: subDays(new Date(), 15),
+    endDate: addDays(new Date(), 45),
+    progress: 35,
+  },
+  {
+    id: "PROJ-002",
+    name: "Cloud Migration",
+    description: "Moving on-premise infrastructure to AWS.",
+    status: "Planning",
+    lead: users[0],
+    team: [users[0], users[1]],
+    startDate: addDays(new Date(), 10),
+    endDate: addDays(new Date(), 90),
+    progress: 0,
+  },
+  {
+    id: "PROJ-003",
+    name: "Q3 Marketing Campaign",
+    description: "Digital and print campaign for the new product launch.",
+    status: "Active",
+    lead: users[3],
+    team: [users[3], users[4]],
+    startDate: subDays(new Date(), 5),
+    endDate: addDays(new Date(), 25),
+    progress: 15,
+  },
+];
+
+export const tasks: Task[] = [
+  {
+    id: "TASK-101",
+    projectId: "PROJ-001",
+    title: "Finalize Homepage Mockups",
+    description: "Complete the high-fidelity designs for the homepage including mobile view.",
+    status: "Done",
+    priority: "High",
+    assignedTo: users[4],
+    dueDate: subDays(new Date(), 2),
+  },
+  {
+    id: "TASK-102",
+    projectId: "PROJ-001",
+    title: "Implement Hero Section",
+    description: "Code the hero section with the new animation library.",
+    status: "In Progress",
+    priority: "Medium",
+    assignedTo: users[1],
+    dueDate: addDays(new Date(), 2),
+  },
+  {
+    id: "TASK-103",
+    projectId: "PROJ-001",
+    title: "Content Strategy Meeting",
+    description: "Define the tone of voice and key messaging.",
+    status: "Todo",
+    priority: "Medium",
+    assignedTo: users[3],
+    dueDate: addDays(new Date(), 5),
+  },
+  {
+    id: "TASK-201",
+    projectId: "PROJ-002",
+    title: "AWS Cost Estimation",
+    description: "Calculate projected monthly costs for EC2 and RDS instances.",
+    status: "Review",
+    priority: "High",
+    assignedTo: users[0],
+    dueDate: addDays(new Date(), 1),
+  },
+  {
+    id: "TASK-202",
+    projectId: "PROJ-002",
+    title: "Security Audit",
+    description: "Review current security policies before migration planning.",
+    status: "Todo",
+    priority: "Critical",
+    assignedTo: users[0],
+    dueDate: addDays(new Date(), 15),
+  },
 ];
