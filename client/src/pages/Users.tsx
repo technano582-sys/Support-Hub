@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { users, User } from "@/lib/mockData";
 import { Search, MoreHorizontal, UserPlus, Mail, Shield } from "lucide-react";
+import { Link } from "wouter";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,10 +41,12 @@ export default function Users() {
           <p className="text-muted-foreground mt-1">Manage team members, roles, and access permissions.</p>
         </div>
         <div className="flex gap-2">
-           <Button>
-             <UserPlus className="mr-2 h-4 w-4" />
-             Invite User
-           </Button>
+           <Link href="/users/invite">
+             <Button>
+               <UserPlus className="mr-2 h-4 w-4" />
+               Invite User
+             </Button>
+           </Link>
         </div>
       </div>
 
