@@ -1,0 +1,39 @@
+@{
+  ViewData["Title"] = "Users";
+  Layout = "_Layout";
+}
+
+<div class="container-fluid">
+  <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+    <div>
+      <h1 class="h3 fw-bold mb-1" data-testid="text-users-title">Users</h1>
+      <div class="text-muted" data-testid="text-users-subtitle">Manage team members, roles, and permissions.</div>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary btn-sm" data-action="invite-user" data-testid="button-invite-user">Invite User</button>
+    </div>
+  </div>
+
+  <div class="card shadow-sm" data-testid="card-users">
+    <div class="card-body">
+      <div class="input-group mb-3" style="max-width: 420px">
+        <span class="input-group-text">Search</span>
+        <input class="form-control" id="userSearch" type="search" placeholder="Search users..." data-testid="input-user-search" />
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle" data-testid="table-users">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Role</th>
+              <th>Department</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="usersTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+@{
+  ViewData["Title"] = "Dashboard";
+  Layout = "_Layout";
+}
+
+<div class="container-fluid">
+  <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+    <div>
+      <h1 class="h3 fw-bold mb-1" data-testid="text-dashboard-title">Dashboard</h1>
+      <div class="text-muted" data-testid="text-dashboard-subtitle">Live overview of tickets, projects, and delivery health.</div>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary btn-sm" data-testid="button-download-report">Download report</button>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-md-6 col-xl-3">
+      <div class="card card-metric shadow-sm" data-testid="card-metric-total">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="text-muted small">Total Tickets</div>
+              <div class="h4 fw-bold mb-0" data-testid="text-total-tickets">124</div>
+            </div>
+            <span class="badge text-bg-primary">+12%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <div class="card card-metric shadow-sm" data-testid="card-metric-open">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="text-muted small">Open Tickets</div>
+              <div class="h4 fw-bold mb-0" data-testid="text-open-tickets">45</div>
+            </div>
+            <span class="badge text-bg-warning">+4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <div class="card card-metric shadow-sm" data-testid="card-metric-response">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="text-muted small">Avg. Response</div>
+              <div class="h4 fw-bold mb-0" data-testid="text-avg-response">1h 45m</div>
+            </div>
+            <span class="badge text-bg-success">-15m</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <div class="card card-metric shadow-sm" data-testid="card-metric-sla">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="text-muted small">SLA Compliance</div>
+              <div class="h4 fw-bold mb-0" data-testid="text-sla">96.5%</div>
+            </div>
+            <span class="badge text-bg-success">OK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12 col-lg-8">
+      <div class="card shadow-sm" data-testid="card-ticket-volume">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+              <div class="fw-bold">Ticket Volume</div>
+              <div class="text-muted small">Last 7 days — new vs resolved</div>
+            </div>
+            <span class="badge text-bg-light">Mock chart</span>
+          </div>
+          <div class="chart-placeholder" data-testid="chart-ticket-volume"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <div class="card shadow-sm h-100" data-testid="card-activity">
+        <div class="card-body">
+          <div class="fw-bold mb-1">Recent Activity</div>
+          <div class="text-muted small mb-3">Latest updates</div>
+          <div class="list-group list-group-flush" id="activityList" data-testid="list-activity"></div>
+          <button class="btn btn-link w-100 mt-2" data-testid="button-view-activity">View all activity</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

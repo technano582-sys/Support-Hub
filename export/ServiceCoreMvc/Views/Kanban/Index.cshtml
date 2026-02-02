@@ -1,0 +1,50 @@
+@{
+  ViewData["Title"] = "Kanban";
+  Layout = "_Layout";
+}
+
+<div class="container-fluid">
+  <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+    <div>
+      <h1 class="h3 fw-bold mb-1" data-testid="text-kanban-title">Kanban Board</h1>
+      <div class="text-muted" data-testid="text-kanban-subtitle">Visual workflow tracking (mock drag & drop).</div>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary btn-sm" id="addTaskBtn" data-testid="button-add-task">Add Task</button>
+    </div>
+  </div>
+
+  <div class="kanban" data-testid="kanban-board">
+    <div class="kanban-col" data-col="Todo" data-testid="kanban-col-todo">
+      <div class="kanban-col__head">
+        <div class="fw-semibold">To Do</div>
+        <span class="badge text-bg-light" data-testid="badge-todo-count">0</span>
+      </div>
+      <div class="kanban-col__body" id="kanbanTodo"></div>
+    </div>
+
+    <div class="kanban-col" data-col="In Progress" data-testid="kanban-col-progress">
+      <div class="kanban-col__head">
+        <div class="fw-semibold">In Progress</div>
+        <span class="badge text-bg-light" data-testid="badge-progress-count">0</span>
+      </div>
+      <div class="kanban-col__body" id="kanbanProgress"></div>
+    </div>
+
+    <div class="kanban-col" data-col="Review" data-testid="kanban-col-review">
+      <div class="kanban-col__head">
+        <div class="fw-semibold">Review</div>
+        <span class="badge text-bg-light" data-testid="badge-review-count">0</span>
+      </div>
+      <div class="kanban-col__body" id="kanbanReview"></div>
+    </div>
+
+    <div class="kanban-col" data-col="Done" data-testid="kanban-col-done">
+      <div class="kanban-col__head">
+        <div class="fw-semibold">Done</div>
+        <span class="badge text-bg-light" data-testid="badge-done-count">0</span>
+      </div>
+      <div class="kanban-col__body" id="kanbanDone"></div>
+    </div>
+  </div>
+</div>
